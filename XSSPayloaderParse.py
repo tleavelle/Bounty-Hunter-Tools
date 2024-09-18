@@ -1,18 +1,18 @@
+#This program will parse outputs from XSSPayloader's and alert you to any potential XSS vulerabilities
 import re
 
-# Define the function to analyze the log file
 def analyze_log_file(log_file):
     # Patterns to detect potential XSS vulnerabilities
     patterns = [
-        r'<script[^>]*?>',  # Detects script tags
-        r'on[a-z]+=',       # Detects JavaScript event handlers (e.g., onerror=)
-        r'javascript:',     # Detects JavaScript URLs (e.g., <a href="javascript:...")
-        r'<img[^>]*?>',     # Detects image tags (for possible onerror= payloads)
-        r'<iframe[^>]*?>',  # Detects iframe tags
-        r'&lt;script&gt;',  # Encoded <script> tag
+        r'<script[^>]*?>',  
+        r'on[a-z]+=',       
+        r'javascript:',     
+        r'<img[^>]*?>',     
+        r'<iframe[^>]*?>',  
+        r'&lt;script&gt;', 
     ]
     
-    # Load the log file content
+    # Load the logfile
     try:
         with open(log_file, 'r') as file:
             log_content = file.read()
