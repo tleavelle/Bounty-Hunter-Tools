@@ -64,7 +64,7 @@ def send_payloads(payloads, target_urls, param_name="q", delay=1, method="GET"):
 # Main execution
 if __name__ == "__main__":
     # Prompt the user for input
-    payload_file = input("Enter the path to the payload file: ") or "/home/user/Desktop/Stuff/xssPayloads.txt"
+    payload_file = input("Enter the path to the payload file: ")
     target_urls_input = input("Enter target URLs with placeholders for injecting payloads (separated by spaces): ")
     target_urls = target_urls_input.split()
     param_name = input("Enter the parameter name for payload injection (default 'q'): ") or "q"
