@@ -1,4 +1,4 @@
-
+#This program is built on the XSSPayloader's, but designed for finding SQL 
 import requests
 import logging
 import urllib.parse 
