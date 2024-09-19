@@ -63,8 +63,15 @@ def send_payloads(payloads, target_urls, param_name="q", delay=1, method="GET"):
 
 # Main execution
 if __name__ == "__main__":
+    # Construct the relative path to the payload file (assuming the file is in the same repo under 'data/' folder)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    payload_file = os.path.join(script_dir, 'data', 'xssPayloads.txt')
+    
+    if not os.path.exists(payload_file):
+        print(f"Error: Payload file {payload_file} not found.")
+        exit(1)
+
     # Prompt the user for input
-    payload_file = input("Enter the path to the payload file: ") 
     target_urls_input = input("Enter target URLs with placeholders for injecting payloads (separated by spaces): ")
     target_urls = target_urls_input.split()
     param_name = input("Enter the parameter name for payload injection (default 'q'): ") or "q"
@@ -76,9 +83,8 @@ if __name__ == "__main__":
         print("Invalid HTTP method. Defaulting to GET.")
         method = "GET"
     
-    # Load the payloads from a file
+    # Load the payloads from the file
     payloads = load_payloads(payload_file)
     
     # Send the payloads to the target URL
     send_payloads(payloads, target_urls, param_name=param_name, delay=delay, method=method)
-
